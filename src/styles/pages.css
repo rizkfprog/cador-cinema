@@ -362,3 +362,29 @@
   .phero__frame img { filter: none; }
   .faq__item::details-content { transition: none; }
 }
+
+/* ---------- Canevas commun : vous vous reconnaissez si… ---------- */
+.recognize { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.recognize li { position: relative; padding: 22px 24px 22px 66px; border: 1px solid var(--line); border-radius: 6px; background: rgba(14,14,13,.7); font-family: var(--serif); font-size: clamp(22px, 1.9vw, 30px); line-height: 1.15; color: #fff; }
+.recognize li::before { content: '«'; position: absolute; left: 24px; top: 16px; font-size: 40px; line-height: 1; color: var(--gold); }
+
+/* ---------- Pour aller plus loin (replié) ---------- */
+.more { max-width: 1500px; margin: 0 auto clamp(60px, 10vh, 120px); padding: 0 var(--gutter); position: relative; z-index: 3; }
+.more__box { border: 1px solid rgba(226,196,154,.3); border-radius: 8px; background: rgba(12,12,11,.8); interpolate-size: allow-keywords; }
+.more__box > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: clamp(22px, 3vw, 34px) clamp(22px, 3vw, 40px); }
+.has-cursor .more__box > summary { cursor: none; }
+.more__box > summary::-webkit-details-marker { display: none; }
+.more__box > summary span { display: grid; gap: 4px; }
+.more__box > summary small { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--sand); }
+.more__box > summary b { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.6vw, 42px); color: #fff; line-height: 1; }
+.more__box > summary::after { content: '+'; flex: none; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(226,196,154,.5); color: var(--gold); font-size: 22px; transition: transform .5s var(--ease-out); }
+.more__box[open] > summary::after { transform: rotate(45deg); }
+.more__box::details-content { block-size: 0; overflow: hidden; transition: block-size .7s var(--ease-out), content-visibility .7s allow-discrete; }
+.more__box[open]::details-content { block-size: auto; }
+.more__inner { padding: 0 clamp(22px, 3vw, 40px) clamp(26px, 3vw, 44px); }
+.more__inner .chap { padding: 50px 0 0; }
+.more__inner .faq { padding: 50px 0 0; }
+@media (prefers-reduced-motion: reduce) { .more__box::details-content { transition: none; } }
+.faq--inner { display: block; max-width: none; padding: 30px 0 0; margin: 0; }
+.more__inner .ledger { margin-top: 10px; }
+.more__inner .duel { margin: 20px 0 30px; }

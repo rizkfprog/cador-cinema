@@ -354,6 +354,8 @@ async function boot() {
   legalToc();
   if (app.stage) finaleScenes({ zoom: 1.5, fade: 0.45, flow: base.flow });
   else gsap.from('.credits__roll > *', { y: 60, opacity: 0, stagger: 0.12, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.credits', start: 'top 70%', once: true } });
+  // le contenu replié change la hauteur de page : on recale les déclencheurs après ouverture
+  $$('.more__box').forEach((d) => d.addEventListener('toggle', () => setTimeout(() => ScrollTrigger.refresh(), 750)));
   initHUD(runtime, 'Plan');
   ScrollTrigger.refresh();
   if (import.meta.env.DEV) window.__cador = { state, lenis: app.lenis, ScrollTrigger };

@@ -220,7 +220,7 @@ function buildScenes() {
   adam
     .fromTo('.adam__tag', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 2.2)
     .add(shot({ color: 0, fade: 0.6, flow: 0.25, particles: 1 }, { color: 1, fade: 0.35, flow: 0.5, particles: 1.4, ease: 'none', duration: 2.6 }), 0);
-  gsap.from('.steps li', {
+  if ($('.steps')) gsap.from('.steps li', {
     x: -40,
     opacity: 0,
     stagger: 0.07,
@@ -250,7 +250,7 @@ function buildScenes() {
     onEnter: () => $('.terrain__img').classList.add('is-color'),
     onLeaveBack: () => $('.terrain__img').classList.remove('is-color'),
   });
-  gsap.from('.career li', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.career', start: 'top 80%', once: true } });
+  if ($('.career')) gsap.from('.career li', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.career', start: 'top 80%', once: true } });
   const strip = $('.strip__track');
   gsap.fromTo(strip, { x: () => innerWidth * 0.1 }, {
     x: () => -(strip.scrollWidth - innerWidth * 0.9),

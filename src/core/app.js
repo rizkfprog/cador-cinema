@@ -385,6 +385,10 @@ export function initReveals({ skip = '.hero, .phero' } = {}) {
     el._words = split.words;
   });
 
+  $$('.benefits__col, .recognize').forEach((list) => {
+    gsap.from($$('li', list), { opacity: 0, y: 30, stagger: 0.1, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: list, start: 'top 80%', once: true } });
+  });
+
   $$('[data-count]').forEach((el) => {
     if (el.closest('.bilans, [data-count-manual]')) return;
     ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: () => countUp(el) });

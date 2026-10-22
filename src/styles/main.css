@@ -562,3 +562,26 @@ html.is-cinema { --bar: clamp(18px, 6.5vh, 76px); }
 .sheet__acts .eur { color: var(--gold); font-weight: 700; white-space: nowrap; }
 .line { padding-bottom: 0.06em; }
 @media (max-width: 720px) { html.is-cinema { --bar: 22px; } }
+
+/* ---------- Ce que ça change (accueil et sous-pages) ---------- */
+.change { max-width: 1320px; margin: 0 auto; }
+.change__head { max-width: 900px; margin-bottom: 56px; }
+.benefits { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 24px); }
+.benefits__col { padding: clamp(26px, 3vw, 44px); border: 1px solid var(--line); border-radius: 8px; background: rgba(14,14,13,.78); backdrop-filter: blur(6px); }
+.benefits__col--you { border-color: rgba(226,196,154,.45); background: linear-gradient(160deg, rgba(226,196,154,.12), rgba(14,14,13,.85) 55%); box-shadow: 0 0 80px -30px rgba(226,196,154,.35); }
+.benefits__k { display: flex; align-items: baseline; gap: 14px; margin: 0 0 22px; font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--sand); }
+.benefits__k span { font-family: var(--serif); font-size: 40px; letter-spacing: 0; color: transparent; -webkit-text-stroke: 1px rgba(226,196,154,.6); }
+.benefits__col--you .benefits__k { color: var(--gold); }
+.benefits ul { list-style: none; margin: 0; padding: 0; }
+.benefits li { padding: 16px 0 16px 30px; border-top: 1px solid var(--line); position: relative; color: rgba(236,231,225,.75); font-size: clamp(16px, 1.15vw, 19px); line-height: 1.45; }
+.benefits li::before { content: ''; position: absolute; left: 2px; top: 25px; width: 12px; height: 1px; background: var(--gold); }
+.benefits li strong { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2vw, 32px); line-height: 1.1; color: #fff; margin-bottom: 2px; }
+.benefits__col--you li strong { color: var(--gold-hot); }
+.change__close { margin: 56px 0 0; text-align: center; font-family: var(--serif); font-size: clamp(30px, 3.6vw, 60px); line-height: 1.05; color: #fff; }
+.change__close em { color: var(--gold); }
+.adam__body--short { display: block; max-width: 760px; text-align: center; }
+.adam__body--short .lede { max-width: none; margin: 0 auto; }
+.adam__body--short .adam__links { justify-content: center; }
+@media (max-width: 720px) {
+  .benefits { grid-template-columns: 1fr; }
+}
