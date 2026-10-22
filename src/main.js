@@ -12,32 +12,45 @@ function heroFrame() {
 }
 
 /* =========================================================
-   Vidéo
+   Vidéo : joue en silence à l'écran, le son se met d'un geste
    ========================================================= */
 function initVideo() {
   const film = $('#film');
-  const video = $('.film__video');
-  const play = $('.film__play');
-  play.addEventListener('click', () => {
-    video.muted = false;
-    video.controls = true;
-    video.play().catch(() => {});
-    film.classList.add('is-playing');
-    sound.duck(true);
-  });
-  video.addEventListener('pause', () => sound.duck(false));
-  video.addEventListener('ended', () => {
-    film.classList.remove('is-playing');
-    video.controls = false;
-    sound.duck(false);
-  });
+  const video = $('.film__video', film);
+  const btn = $('.film__sound', film);
+  const label = $('.film__sound-label', film);
+  const tap = $('.film__tap', film);
+
+  const setSoundOn = (on) => {
+    video.muted = !on;
+    film.classList.toggle('has-sound', on);
+    btn.setAttribute('aria-pressed', String(on));
+    label.textContent = on ? 'Couper le son' : 'Activer le son';
+    tap.setAttribute('aria-label', on ? 'Couper le son de la vidéo' : 'Activer le son de la vidéo');
+    sound.duck(on);
+    if (on) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+  };
+  const toggle = () => setSoundOn(video.muted);
+  btn.addEventListener('click', toggle);
+  tap.addEventListener('click', toggle);
+
   ScrollTrigger.create({
     trigger: film,
-    start: 'top bottom',
-    end: 'bottom top',
-    onLeave: () => video.pause(),
-    onLeaveBack: () => video.pause(),
+    start: 'top 75%',
+    end: 'bottom 25%',
+    onToggle: (self) => {
+      if (self.isActive && !reduced) video.play().catch(() => {});
+      else if (!self.isActive) {
+        video.pause();
+        if (!video.muted) setSoundOn(false);
+      }
+    },
   });
+  // mouvement réduit : pas de lecture automatique, le bouton lance la vidéo
+  if (reduced) btn.addEventListener('click', () => video.play().catch(() => {}), { once: true });
 }
 
 function buildScenes() {
@@ -100,58 +113,18 @@ function buildScenes() {
     scrollTrigger: { trigger: '.slam', start: 'center center', end: 'bottom top', scrub: 1 },
   })
     .to('.slam__text', { yPercent: -30, opacity: 0, ease: 'none' }, 0)
-    .add(shot({ dials: 1, sat: 0.15, flow: 0.15 }, { dials: 0, sat: 0.9, flow: 0.9, ease: 'none' }), 0);
+    .add(shot({ sat: 0.15 }, { sat: 0.6, ease: 'none' }), 0);
 
-  /* ---------- III · entre deux bilans ---------- */
-  const track = $('.bilans__track');
-  const dist = () => track.scrollWidth - innerWidth;
-  const horiz = gsap.to(track, {
-    x: () => -dist(),
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.bilans__pin',
-      start: 'top top',
-      end: () => '+=' + dist(),
-      pin: true,
-      scrub: 1,
-      invalidateOnRefresh: true,
-    },
-  });
-  gsap.to('.bilans__progress', {
-    scaleX: 1,
-    ease: 'none',
-    scrollTrigger: { trigger: '.bilans__pin', start: 'top top', end: () => '+=' + dist(), scrub: true },
-  });
-  $$('.reel').forEach((reel) => {
-    gsap.from(reel.children, {
-      y: 60,
-      opacity: 0,
-      stagger: 0.08,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: reel, containerAnimation: horiz, start: 'left 85%', end: 'left 45%', scrub: 1 },
-    });
-    const c = $('[data-count]', reel);
-    if (c) ScrollTrigger.create({ trigger: reel, containerAnimation: horiz, start: 'left 60%', once: true, onEnter: () => countUp(c) });
-  });
+  /* ---------- III · ce que ça change ---------- */
+  gsap.timeline({ scrollTrigger: { trigger: '.change', start: 'top bottom', end: 'top 30%', scrub: 1 } })
+    .add(shot({ dials: 1, sat: 0.15, flow: 0.15, fade: 0.1 }, { dials: 0, sat: 0.9, flow: 0.4, fade: 0.55, ease: 'none' }), 0);
 
   /* ---------- IV · le film ---------- */
-  const film = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.film__pin',
-      start: 'top top',
-      end: '+=160%',
-      pin: true,
-      scrub: 1,
-      onEnter: () => sound.whoosh(1.1),
-    },
+  initVideo();
+  gsap.from('.film__screen', {
+    y: 80, opacity: 0, scale: 0.94, duration: 1.4, ease: 'expo.out',
+    scrollTrigger: { trigger: '.film', start: 'top 70%', once: true, onEnter: () => sound.whoosh(1.1) },
   });
-  cinema('.film__pin', 'top top', '+=160%');
-  film
-    .fromTo('.film__half--l', { xPercent: 0 }, { xPercent: -70, opacity: 0.12, ease: 'power2.inOut' }, 0)
-    .fromTo('.film__half--r', { xPercent: 0 }, { xPercent: 70, opacity: 0.12, ease: 'power2.inOut' }, 0)
-    .fromTo('.film__frame', { scale: 0.35, rotate: -8, opacity: 0 }, { scale: 1, rotate: 0, opacity: 1, ease: 'power3.inOut' }, 0)
-    .fromTo('.film__aside', { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.4 }, 0.7)
-    .add(shot({ fade: 0.1, flow: 0.9 }, { fade: 0.6, flow: 0.25, ease: 'none' }), 0);
 
   /* ---------- V · le point du mois ---------- */
   gsap.from('.phone', {
@@ -193,45 +166,9 @@ function buildScenes() {
     scrollTrigger: { trigger: '.temps__cards', start: 'top 95%', end: 'top 55%', scrub: 1 },
   });
 
-  /* ---------- VII · ADAM BOARDS : le film passe en couleur ---------- */
-  const cols = $$('.adam__col');
-  const adam = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.adam__pin',
-      start: 'top top',
-      end: '+=240%',
-      pin: true,
-      scrub: 1,
-      onEnter: () => sound.chime(),
-    },
-  });
-  cinema('.adam__pin', 'top top', '+=240%');
-  cols.forEach((col, i) => {
-    const c = getComputedStyle(col).getPropertyValue('--c').trim();
-    const b = $('b', col);
-    gsap.set(b, { color: 'rgba(0,0,0,0)', webkitTextStroke: '1px rgba(236,231,225,.35)' });
-    gsap.set($('.adam__disc', col), { scale: 0, rotate: -120 });
-    gsap.set($('.adam__rest', col), { yPercent: 60, opacity: 0 });
-    adam
-      .to(b, { color: c, webkitTextStroke: '1px rgba(0,0,0,0)', ease: 'power2.out', duration: 0.6 }, i * 0.55)
-      .to($('.adam__disc', col), { scale: 1, rotate: 0, ease: 'back.out(2)', duration: 0.6 }, i * 0.55 + 0.1)
-      .to($('.adam__rest', col), { yPercent: 0, opacity: 1, ease: 'power3.out', duration: 0.5 }, i * 0.55 + 0.2);
-  });
-  adam
-    .fromTo('.adam__tag', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 2.2)
-    .add(shot({ color: 0, fade: 0.6, flow: 0.25, particles: 1 }, { color: 1, fade: 0.35, flow: 0.5, particles: 1.4, ease: 'none', duration: 2.6 }), 0);
-  if ($('.steps')) gsap.from('.steps li', {
-    x: -40,
-    opacity: 0,
-    stagger: 0.07,
-    duration: 0.9,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.steps', start: 'top 80%', once: true },
-  });
-
   /* ---------- VIII · le terrain ---------- */
   gsap.timeline({ scrollTrigger: { trigger: '.terrain', start: 'top bottom', end: 'top 20%', scrub: 1 } })
-    .add(shot({ color: 1, particles: 1.4, fade: 0.35, flow: 0.5 }, { color: 0, particles: 0.8, fade: 0.55, flow: 0.3, ease: 'none' }), 0);
+    .add(shot({ color: 0, particles: 1, fade: 0.55, flow: 0.4 }, { particles: 0.8, fade: 0.6, flow: 0.3, ease: 'none' }), 0);
   gsap.fromTo('.terrain__img', { clipPath: 'inset(100% 0% 0% 0%)' }, {
     clipPath: 'inset(0% 0% 0% 0%)',
     ease: 'expo.inOut',
@@ -251,12 +188,6 @@ function buildScenes() {
     onLeaveBack: () => $('.terrain__img').classList.remove('is-color'),
   });
   if ($('.career')) gsap.from('.career li', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.career', start: 'top 80%', once: true } });
-  const strip = $('.strip__track');
-  gsap.fromTo(strip, { x: () => innerWidth * 0.1 }, {
-    x: () => -(strip.scrollWidth - innerWidth * 0.9),
-    ease: 'none',
-    scrollTrigger: { trigger: '.strip', start: 'top bottom', end: 'bottom top', scrub: 1, invalidateOnRefresh: true },
-  });
 
   /* ---------- IX · avis ---------- */
   const quotes = $$('.avis .quote');
@@ -271,18 +202,7 @@ function buildScenes() {
       .to(q, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1 }, '<0.4')
       .to({}, { duration: 0.6 });
   });
-  avis.add(shot({ fade: 0.55 }, { fade: 0.7, ease: 'none', duration: avis.duration() }), 0);
-
-  /* ---------- X · la machine ---------- */
-  const wires = $$('.machine__wires path');
-  wires.forEach((w) => {
-    const l = w.getTotalLength();
-    gsap.set(w, { strokeDasharray: l, strokeDashoffset: l });
-  });
-  gsap.timeline({ scrollTrigger: { trigger: '.machine', start: 'top 75%', once: true } })
-    .from('.machine__nodes > g', { scale: 0, opacity: 0, transformOrigin: 'center', stagger: 0.12, duration: 0.8, ease: 'back.out(2)' })
-    .to(wires, { strokeDashoffset: 0, duration: 1.2, stagger: 0.1, ease: 'power2.inOut' }, 0.3)
-    .from('.machine__pulses', { opacity: 0, duration: 0.6 }, '-=0.2');
+  avis.add(shot({ fade: 0.6 }, { fade: 0.7, ease: 'none', duration: avis.duration() }), 0);
 
   /* ---------- XI · le plein + générique ---------- */
   finaleScenes({ zoom: 1.5, fade: 0.7, flow: 0.3 });
@@ -394,7 +314,6 @@ function intro() {
 async function boot() {
   initReport();
   initMenu();
-  initVideo();
   initLinks();
   initVisibility();
 
@@ -402,6 +321,7 @@ async function boot() {
 
   if (reduced) {
     $('#loader')?.remove();
+    initVideo();
     await stageReady;
     Object.assign(state, { backlight: 1, speed: 0.78, fuel: 0.09, warn: 1, ...heroFrame(), fade: 0.35 });
     app.stage?.render(0.016);

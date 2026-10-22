@@ -113,50 +113,9 @@
       </div>
     </section>
 
-    <!-- ============ ACTE III — ENTRE DEUX BILANS ============ -->
-    <section class="act bilans" id="bilans" data-act="III" data-act-name="Entre deux bilans">
-      <div class="bilans__pin">
-        <div class="bilans__track">
-          <article class="reel reel--intro">
-            <p class="kicker"><span class="kicker__line"></span>Bilan N</p>
-            <h2 class="reel__lead">Entre deux bilans, votre bénéfice s'échappe <em>sans bruit.</em></h2>
-          </article>
-          <article class="reel">
-            <span class="reel__num">01</span>
-            <h3 class="reel__title">Le fret</h3>
-            <p class="reel__body">Le conteneur a augmenté. Personne ne vous l'a dit.</p>
-            <p class="reel__fig"><span data-count="1150" data-prefix="−&nbsp;" data-suffix="&nbsp;€">0</span><small>de marge, sur un seul conteneur*</small></p>
-          </article>
-          <article class="reel">
-            <span class="reel__num">02</span>
-            <h3 class="reel__title">L'octroi de mer</h3>
-            <p class="reel__body">Oublié dans votre prix, c'est vous qui le payez.</p>
-            <p class="reel__fig"><span>Prix de revient</span><small>à recalculer, gamme par gamme</small></p>
-          </article>
-          <article class="reel">
-            <span class="reel__num">03</span>
-            <h3 class="reel__title">Le temps en rayon</h3>
-            <p class="reel__body">Ce qui dort coûte. Ce qui manque se vend chez le voisin.</p>
-            <p class="reel__fig"><span data-count="60" data-suffix="&nbsp;%">0</span><small>du stock visé, écoulé par une simple remise*</small></p>
-          </article>
-          <article class="reel">
-            <span class="reel__num">04</span>
-            <h3 class="reel__title">Les clients à soixante jours</h3>
-            <p class="reel__body">Vous avez déjà payé. Eux paieront plus tard.</p>
-            <p class="reel__fig"><span data-count="11200" data-suffix="&nbsp;€">0</span><small>de factures de plus de 60 jours*</small></p>
-          </article>
-          <article class="reel reel--outro">
-            <p class="kicker"><span class="kicker__line"></span>Bilan N+1</p>
-            <h2 class="reel__lead">C'est là que je travaille <em>avec vous, chaque mois.</em></h2>
-            <p class="reel__note">* Exemples. Les chiffres sont fictifs.</p>
-          </article>
-        </div>
-        <div class="bilans__rail" aria-hidden="true"><span class="bilans__progress"></span></div>
-      </div>
-    </section>
 
-    <!-- ============ ACTE IV — CE QUE ÇA CHANGE ============ -->
-    <section class="act change" id="change" data-act="IV" data-act-name="Ce que ça change" aria-labelledby="change-titre">
+    <!-- ============ ACTE III — CE QUE ÇA CHANGE ============ -->
+    <section class="act change" id="change" data-act="III" data-act-name="Ce que ça change" aria-labelledby="change-titre">
       <header class="change__head">
         <p class="kicker"><span class="kicker__line"></span>Ce que ça change</p>
         <h2 class="h2" id="change-titre" data-split>Pour votre entreprise. Et pour votre vie.</h2>
@@ -184,32 +143,31 @@
       <p class="change__close" data-fade>Une entreprise qui tourne, c'est un dirigeant <em>qui respire.</em></p>
     </section>
 
-    <!-- ============ ACTE V — LE FILM ============ -->
-    <section class="act film" id="film" data-act="V" data-act-name="Au volant">
-      <div class="film__pin">
-        <h2 class="film__title">
-          <span class="film__half film__half--l">Vous êtes au volant</span>
-          <span class="film__half film__half--r"><em>de votre entreprise.</em></span>
-        </h2>
-        <div class="film__frame">
-          <video class="film__video" playsinline preload="none" poster="./assets/video/volant-entreprise-affiche.jpg" width="720" height="1280">
+    <!-- ============ ACTE IV — LE FILM ============ -->
+    <section class="act film" id="film" data-act="IV" data-act-name="Au volant" aria-labelledby="film-titre">
+      <div class="film__stage">
+        <div class="film__copy">
+          <p class="kicker"><span class="kicker__line"></span>28 secondes</p>
+          <h2 class="h2" id="film-titre" data-split>Vous êtes au volant de votre entreprise.</h2>
+          <p class="lede" data-fade>Mettez le son&nbsp;: c'est vous qu'on raconte.</p>
+          <div class="film__actions" data-fade>
+            <button class="btn btn--gold film__sound" type="button" aria-pressed="false" data-magnetic>
+              <span class="film__sound-ic" aria-hidden="true"><i></i><i></i><i></i></span><span class="film__sound-label">Activer le son</span>
+            </button>
+            <a class="link-arrow" href="https://adamboards.fr/test-ghassan.html" target="_blank" rel="noopener">Faire le test en trois minutes</a>
+          </div>
+        </div>
+        <div class="film__screen">
+          <video class="film__video" muted loop playsinline preload="none" poster="./assets/video/volant-entreprise-affiche.jpg" width="720" height="1280" aria-label="Vidéo de vingt-huit secondes : vous êtes au volant de votre entreprise">
             <source src="./assets/video/volant-entreprise.mp4" type="video/mp4">
           </video>
-          <button class="film__play" type="button" data-cursor="Lecture" aria-label="Lire la vidéo, vingt-huit secondes, avec le son">
-            <span class="film__play-ring"></span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-          <span class="film__duration">00:28 · avec le son</span>
-        </div>
-        <div class="film__aside">
-          <p>Vingt-huit secondes, avec le son.</p>
-          <a class="btn btn--gold" href="https://adamboards.fr/test-ghassan.html" target="_blank" rel="noopener" data-magnetic data-cursor="Tester">Faire le test en trois minutes</a>
+          <button class="film__tap" type="button" aria-label="Activer le son de la vidéo" data-cursor="Le son"></button>
         </div>
       </div>
     </section>
 
     <!-- ============ ACTE V — LE POINT DU MOIS ============ -->
-    <section class="act point" id="point" data-act="VI" data-act-name="Le point du mois">
+    <section class="act point" id="point" data-act="V" data-act-name="Le point du mois">
       <div class="point__grid">
         <div class="point__copy">
           <p class="kicker"><span class="kicker__line"></span>Chaque mois</p>
@@ -249,7 +207,7 @@
     </section>
 
     <!-- ============ ACTE VI — TROIS TEMPS ============ -->
-    <section class="act temps" id="accompagnements" data-act="VII" data-act-name="Trois temps">
+    <section class="act temps" id="accompagnements" data-act="VI" data-act-name="Trois temps">
       <div class="temps__head">
         <p class="kicker"><span class="kicker__line"></span>Accompagnements</p>
         <h2 class="h2" data-split>Trois temps pour ne plus piloter à l'aveugle.</h2>
@@ -281,32 +239,16 @@
           </article>
         </div>
       </div>
+      <div class="temps__more" data-fade>
+        <a class="temps__link" href="methode-adam-boards.html" data-cursor="Lire"><small>La méthode</small>ADAM BOARDS™&nbsp;: Analyser, Décider, Agir, Mesurer</a>
+        <a class="temps__link" href="automatisation.html" data-cursor="Lire"><small>Pour vos équipes</small>Automatisation&nbsp;: plus personne ne recopie</a>
+      </div>
       <p class="temps__price" data-fade>Les tarifs sont publiés sur <a href="https://adamboards.fr/" target="_blank" rel="noopener">adamboards.fr</a>.</p>
     </section>
 
-    <!-- ============ ACTE VII — ADAM BOARDS ============ -->
-    <section class="act adam" id="methode" data-act="VIII" data-act-name="ADAM BOARDS™">
-      <div class="adam__pin">
-        <p class="kicker adam__kicker"><span class="kicker__line"></span>La méthode ADAM BOARDS™</p>
-        <div class="adam__letters" aria-label="Analyser, Décider, Agir, Mesurer">
-          <div class="adam__col" style="--c:var(--y)"><span class="adam__disc adam__disc--1" aria-hidden="true"></span><b>A</b><span class="adam__rest">nalyser</span></div>
-          <div class="adam__col" style="--c:var(--b)"><span class="adam__disc adam__disc--2" aria-hidden="true"></span><b>D</b><span class="adam__rest">écider</span></div>
-          <div class="adam__col" style="--c:var(--g)"><span class="adam__disc adam__disc--3" aria-hidden="true"></span><b>A</b><span class="adam__rest">gir</span></div>
-          <div class="adam__col" style="--c:var(--r)"><span class="adam__disc adam__disc--4" aria-hidden="true"></span><b>M</b><span class="adam__rest">esurer</span></div>
-        </div>
-        <p class="adam__tag">Croquer dans la pomme de la rentabilité.</p>
-      </div>
-      <div class="adam__body adam__body--short">
-        <p class="lede" data-fade>Quatre verbes, dans cet ordre. <strong>Vous n'avez pas de méthode à apprendre&nbsp;: vous la voyez tourner.</strong></p>
-        <div class="adam__links" data-fade>
-          <a class="btn btn--light" href="methode-adam-boards.html" data-magnetic data-cursor="Lire">Les dix étapes en détail</a>
-          <a class="link-arrow" href="https://adamboards.fr/" target="_blank" rel="noopener">Le site adamboards.fr</a>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ ACTE VIII — LE TERRAIN ============ -->
-    <section class="act terrain" id="terrain" data-act="IX" data-act-name="Le terrain">
+    <section class="act terrain" id="terrain" data-act="VII" data-act-name="Le terrain">
       <div class="terrain__grid">
         <figure class="terrain__portrait">
           <div class="terrain__img">
@@ -328,14 +270,6 @@
         <div class="stat"><span class="stat__n" data-count="4">0</span><span class="stat__l">métiers : commerce, production, services, artisanat</span></div>
         <div class="stat"><span class="stat__n" data-count="32">0</span><span class="stat__l">avis Google, tous à 5 étoiles</span></div>
       </div>
-      <div class="strip" aria-label="Le bureau CADOR en images">
-        <div class="strip__track">
-          <figure><img src="./assets/img/4035-1600.jpg" srcset="./assets/img/4035-800.jpg 800w, ./assets/img/4035-1600.jpg 1600w" sizes="(max-width: 800px) 80vw, 45vw" alt="Ghassan Rizk explique un graphique à l'écran devant deux dirigeants" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-          <figure><img src="./assets/img/3675-1600.jpg" srcset="./assets/img/3675-800.jpg 800w, ./assets/img/3675-1600.jpg 1600w" sizes="(max-width: 800px) 80vw, 45vw" alt="Ghassan Rizk écrit au tableau pendant une séance de travail" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-          <figure><img src="./assets/img/3582-1600.jpg" srcset="./assets/img/3582-800.jpg 800w, ./assets/img/3582-1600.jpg 1600w" sizes="(max-width: 800px) 80vw, 45vw" alt="Ghassan Rizk à son poste de travail, un tableau de suivi à l'écran" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-          <figure><img src="./assets/img/3937-1600.jpg" srcset="./assets/img/3937-800.jpg 800w, ./assets/img/3937-1600.jpg 1600w" sizes="(max-width: 800px) 80vw, 45vw" alt="Le salon du bureau CADOR : Ghassan Rizk échange avec une dirigeante" width="1600" height="1067" loading="lazy" decoding="async"></figure>
-        </div>
-      </div>
       <div class="terrain__links">
         <a class="btn btn--ghost" href="qui-je-suis.html" data-magnetic data-cursor="Lire">Mon parcours en détail</a>
         <a class="podcast" href="https://www.youtube.com/watch?v=a5f1HSOmuug" target="_blank" rel="noopener" data-cursor="Écouter">
@@ -346,7 +280,7 @@
     </section>
 
     <!-- ============ ACTE IX — AVIS ============ -->
-    <section class="act avis" id="avis" data-act="X" data-act-name="Les dirigeants">
+    <section class="act avis" id="avis" data-act="VIII" data-act-name="Les dirigeants">
       <h2 class="kicker avis__kicker"><span class="kicker__line"></span>Ce qu'en disent les dirigeants</h2>
       <div class="avis__pin">
         <figure class="quote">
@@ -370,49 +304,9 @@
       </a>
     </section>
 
-    <!-- ============ ACTE X — AUTOMATISATION ============ -->
-    <section class="act auto" id="automatisation" data-act="XI" data-act-name="La machine">
-      <div class="auto__grid">
-        <div class="auto__copy">
-          <p class="kicker"><span class="kicker__line"></span>Automatisation</p>
-          <h2 class="h2" data-split>Vos équipes arrêtent de recopier.</h2>
-          <p class="lede" data-fade>Vous récupérez des heures chaque semaine, et des chiffres à jour sans y penser. Je construis moi-même les outils&nbsp;: tableaux de bord, Monday, Make.</p>
-          <p class="auto__price" data-fade>Tarif : nous consulter. <a class="link-arrow" href="automatisation.html">Voir ce qui tourne déjà</a></p>
-        </div>
-        <div class="machine" aria-hidden="true">
-          <svg viewBox="0 0 520 460" class="machine__svg">
-            <defs>
-              <linearGradient id="wire" x1="0" x2="1"><stop offset="0" stop-color="#bca48f" stop-opacity=".1"/><stop offset="1" stop-color="#bca48f" stop-opacity=".6"/></linearGradient>
-            </defs>
-            <g class="machine__wires">
-              <path id="w1" d="M120 80 C 220 80, 200 230, 260 230" />
-              <path id="w2" d="M120 230 L 260 230" />
-              <path id="w3" d="M120 380 C 220 380, 200 230, 260 230" />
-              <path id="w4" d="M260 230 C 330 230, 330 120, 400 120" />
-              <path id="w5" d="M260 230 C 330 230, 330 340, 400 340" />
-            </g>
-            <g class="machine__pulses">
-              <circle r="4"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#w1"/></animateMotion></circle>
-              <circle r="4"><animateMotion dur="2.4s" begin=".8s" repeatCount="indefinite"><mpath href="#w2"/></animateMotion></circle>
-              <circle r="4"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite"><mpath href="#w3"/></animateMotion></circle>
-              <circle r="4"><animateMotion dur="2s" begin=".4s" repeatCount="indefinite"><mpath href="#w4"/></animateMotion></circle>
-              <circle r="4"><animateMotion dur="2s" begin="1.4s" repeatCount="indefinite"><mpath href="#w5"/></animateMotion></circle>
-            </g>
-            <g class="machine__nodes">
-              <g transform="translate(60 80)"><rect x="-70" y="-24" width="140" height="48" rx="24"/><text>Mails</text></g>
-              <g transform="translate(60 230)"><rect x="-70" y="-24" width="140" height="48" rx="24"/><text>Fichiers</text></g>
-              <g transform="translate(60 380)"><rect x="-70" y="-24" width="140" height="48" rx="24"/><text>Logiciel de gestion</text></g>
-              <g transform="translate(260 230)" class="machine__hub"><circle r="46"/><text>Make</text></g>
-              <g transform="translate(460 120)"><rect x="-70" y="-24" width="140" height="48" rx="24"/><text>Monday</text></g>
-              <g transform="translate(460 340)"><rect x="-70" y="-24" width="140" height="48" rx="24"/><text>Tableau de bord</text></g>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ ACTE XII — LE PLEIN ============ -->
-<!-- @include contact.html n="XII" kicker="Pour vous, ou pour un dirigeant que vous connaissez" title="Trente minutes pour lire vos chiffres." -->
+    <!-- ============ ACTE IX — LE PLEIN ============ -->
+<!-- @include contact.html n="IX" kicker="Pour vous, ou pour un dirigeant que vous connaissez" title="Trente minutes pour lire vos chiffres." -->
   </main>
 
 <!-- @include footer.html -->

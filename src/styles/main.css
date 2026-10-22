@@ -585,3 +585,37 @@ html.is-cinema { --bar: clamp(18px, 6.5vh, 76px); }
 @media (max-width: 720px) {
   .benefits { grid-template-columns: 1fr; }
 }
+
+/* ---------- Le film, intégré ---------- */
+.film { padding: clamp(100px, 14vh, 160px) var(--gutter); }
+.film__stage { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: clamp(40px, 6vw, 110px); align-items: center; }
+.film__copy .h2 { max-width: 12ch; }
+.film__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 30px; }
+.film__sound-ic { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+.film__sound-ic i { width: 3px; height: 4px; background: currentColor; border-radius: 1px; }
+.film.has-sound .film__sound-ic i { animation: eq 1s ease-in-out infinite; }
+.film.has-sound .film__sound-ic i:nth-child(2) { animation-delay: -.3s; }
+.film.has-sound .film__sound-ic i:nth-child(3) { animation-delay: -.6s; }
+.film__screen { position: relative; height: min(84svh, 820px); aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 60px 140px -40px rgba(0,0,0,.95), 0 0 0 1px rgba(226,196,154,.25), 0 0 120px -40px rgba(226,196,154,.3); }
+.film__video { width: 100%; height: 100%; object-fit: cover; }
+.film__tap { position: absolute; inset: 0; background: none; }
+.film__tap::after { content: 'Toucher pour le son'; position: absolute; left: 50%; bottom: 22px; translate: -50% 0; padding: 8px 14px; border-radius: 999px; background: rgba(10,10,9,.7); backdrop-filter: blur(6px); font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); white-space: nowrap; transition: opacity .4s; }
+.film.has-sound .film__tap::after { opacity: 0; }
+@media (max-width: 900px) {
+  .film__stage { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .film__copy .h2 { max-width: none; }
+  .film__actions { justify-content: center; }
+  .film__screen { height: auto; width: min(100%, 420px); }
+}
+
+/* ---------- Trois temps : méthode et automatisation en une ligne ---------- */
+.temps__more { max-width: 1320px; margin: 30px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.temps__link { display: grid; gap: 6px; padding: 22px 26px; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; font-family: var(--serif); font-size: clamp(20px, 1.7vw, 26px); color: #fff; background: rgba(14,14,13,.7); transition: border-color .4s, color .3s; }
+.temps__link small { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--sand); }
+.temps__link::after { content: '→'; color: var(--gold); }
+.temps__link:hover { border-color: rgba(226,196,154,.5); color: var(--gold); }
+@media (max-width: 720px) { .temps__more { grid-template-columns: 1fr; } }
+
+/* ---------- Interface allégée ---------- */
+.hud-bottom { display: none; }
+.grain { opacity: .055; }
