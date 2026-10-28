@@ -619,3 +619,53 @@ html.is-cinema { --bar: clamp(18px, 6.5vh, 76px); }
 /* ---------- Interface allégée ---------- */
 .hud-bottom { display: none; }
 .grain { opacity: .055; }
+
+/* =========================================================
+   Page unique : 6 écrans
+   ========================================================= */
+/* en-tête minimal : logo, son, contact */
+.hud__nav a:not(.hud__cta), .menu-btn { display: none; }
+@media (max-width: 720px) { .hud__nav { display: flex; } .hud__cta { padding: 7px 14px; font-size: 13px; } }
+
+/* 3 — la chaîne */
+.chain { padding: 0; }
+.chain__pin { min-height: 100svh; display: flex; align-items: center; padding: 120px var(--gutter); position: relative; }
+.chain__pin::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,10,9,.92), rgba(10,10,9,.6) 50%, transparent 75%); }
+.chain__copy { max-width: 760px; width: 100%; }
+.chain__title { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5vw, 84px); line-height: .95; letter-spacing: -0.02em; color: #fff; margin: 0 0 40px; }
+.chain__list { list-style: none; margin: 0; padding: 0; position: relative; }
+.chain__list::before { content: ''; position: absolute; left: 21px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(var(--line), rgba(226,196,154,.5)); }
+.chain__item { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 22px; align-items: start; padding: 16px 0; }
+.chain__n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); border: 1px solid rgba(226,196,154,.4); font-family: var(--mono); font-size: 11px; color: var(--sand); position: relative; z-index: 1; transition: background .4s, color .4s, box-shadow .4s; }
+.chain__item strong { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 2.8vw, 46px); line-height: 1.05; color: #fff; }
+.chain__item span:not(.chain__n) { display: block; margin-top: 6px; color: rgba(236,231,225,.72); font-size: clamp(15px, 1.1vw, 18px); max-width: 44ch; }
+.chain__item.is-on .chain__n { background: var(--gold); color: var(--ink); box-shadow: 0 0 30px rgba(226,196,154,.6); }
+.chain__item--you strong { color: var(--gold-hot); }
+.no-js .chain__item, html:not(.motion) .chain__item { opacity: 1; }
+@media (max-width: 1080px) { .chain__pin::before { background: rgba(10,10,9,.72); } }
+
+/* 4 — comment */
+.how__grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(40px, 6vw, 110px); align-items: center; }
+.how__steps { list-style: none; margin: 10px 0 0; padding: 0; }
+.how__steps li { padding: 20px 0; border-top: 1px solid var(--line); color: rgba(236,231,225,.72); font-size: clamp(16px, 1.15vw, 19px); }
+.how__steps li:last-child { border-bottom: 1px solid var(--line); }
+.how__steps strong { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 2.4vw, 40px); line-height: 1.05; color: #fff; margin: 4px 0 6px; }
+.how__when { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.how__note { margin-top: 24px; color: var(--mute); font-size: 15px; }
+@media (max-width: 1080px) { .how__grid { grid-template-columns: 1fr; } }
+
+/* 5 — pourquoi lui */
+.trust__quote { margin: 30px 0 0; padding: 24px 26px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(226,196,154,.08), transparent); }
+.trust__quote blockquote { margin: 0; }
+.trust__quote p { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2vw, 30px); line-height: 1.2; color: #fff; }
+.trust__quote figcaption { margin-top: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--sand); }
+.trust__proof { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; color: rgba(236,231,225,.75); text-decoration: none; font-size: 15px; }
+.trust__stars { color: var(--gold); letter-spacing: .1em; font-size: 18px; }
+.trust__proof:hover span:last-child { color: var(--gold); }
+
+/* générique : en savoir plus */
+.credits__more { display: grid; gap: 12px; justify-items: center; }
+.credits__more p { margin: 0; font-family: var(--mono); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); }
+.credits__more ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-size: 14px; }
+.credits__more a { color: rgba(236,231,225,.7); text-decoration: none; }
+.credits__more a:hover { color: var(--gold); }
